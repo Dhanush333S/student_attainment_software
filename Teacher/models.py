@@ -1221,7 +1221,7 @@ class staffid_cc(db.Model, UserMixin):
     id = db.Column(db.Integer(), primary_key=True)
     staffid = db.Column(db.Integer(), nullable=False)
     coursecode = db.Column(db.String(length=20), nullable=False)
-    usn_list = db.Column(db.String(length=2000), nullable=False)
+    usn_list = db.Column(db.String(length=10000), nullable=False)
     semester = db.Column(db.Integer(), nullable=False)
 
     def __repr__(self):
