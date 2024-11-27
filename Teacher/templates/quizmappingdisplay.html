@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %} Quiz Mapping Display {% endblock %}
+{% block head %}
+<style>
+    table{
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 10px;       
+    }
+    table, td{
+        border: 1px solid black;
+        text-align: center;
+    }
+    table th{
+        padding: 3px;
+        
+    }
+    td:hover{
+        font-weight: 900;
+    }
+    tr:nth-child(even) {
+        background-color: #FFCCCB;
+    }
+    tr:nth-child(odd) {
+        background-color: #ADD8E6;
+    }
+</style>
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Quiz Mapping</h1>
+    {% if sett[0] >= 1%}
+    <h1>Quiz-1</h1>
+    <table>
+        <tr>
+            <th><strong>Question No.</strong></th>
+            <th><strong>CO Mapped</strong></th>
+            <th><strong>Maximum Marks</strong></th>
+        </tr>
+        {% for i in range(15) %}
+        <tr>
+            <td>{{i+1}}</td>
+            <td>{{lco[i]}}</td>
+            <td>{{lm[i]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    <hr>
+
+    {% if sett[0] >= 2 %}
+    <h1>Quiz-2</h1>
+    <table>
+        <tr>
+            <th><strong>Question No.</strong></th>
+            <th><strong>CO Mapped</strong></th>
+            <th><strong>Maximum Marks</strong></th>
+        </tr>
+        {% for i in range(15) %}
+        <tr>
+            <td>{{i+1}}</td>
+            <td>{{lco2[i]}}</td>
+            <td>{{lm2[i]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    <hr>
+
+    {% if sett[0] == 3 %}
+    <h1>Quiz-3</h1>
+    <table>
+        <tr>
+            <th><strong>Question No.</strong></th>
+            <th><strong>CO Mapped</strong></th>
+            <th><strong>Maximum Marks</strong></th>
+        </tr>
+        {% for i in range(15) %}
+        <tr>
+            <td>{{i+1}}</td>
+            <td>{{lco3[i]}}</td>
+            <td>{{lm3[i]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+</div>
+
+{% endblock %}

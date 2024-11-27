@@ -1,0 +1,356 @@
+{% extends 'base.html' %} {% block title %} Main Page {% endblock %} {% block
+head %}
+
+<style>
+  .box {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    border-radius: 10px;
+    color: whitesmoke;
+  }
+
+  .container1 {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .box:hover {
+    transform: scale(1.4);
+    transition: transfrom ease-out 1s;
+    box-shadow: 2px 2px 2px #000;
+  }
+
+  .box:first-child:hover::after {
+    content: "Student Details";
+    font-size: 15px;
+  }
+
+  .box:nth-child(2):hover::after {
+    content: "CO Mapping";
+    font-size: 15px;
+  }
+
+  .box:nth-child(3):hover::after {
+    content: "View Mapping";
+    font-size: 15px;
+  }
+
+  .box:nth-child(4):hover::after {
+    content: "Sample Excels";
+    font-size: 15px;
+  }
+
+  .box:nth-child(5):hover::after {
+    content: "Course End Survey";
+    font-size: 15px;
+  }
+
+  .box:nth-child(6):hover::after {
+    content: "Course Outcome";
+    font-size: 15px;
+  }
+
+  .box:nth-child(7):hover::after {
+    content: "Upload Internal Marks";
+    text-align: center;
+    font-size: 15px;
+  }
+
+  .box:nth-child(8):hover::after {
+    content: "View Marks Entry";
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .box:nth-child(9):hover::after {
+    content: "CIE & SEE Course Outcome";
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .box:nth-child(10):hover::after {
+    content: "Direct-Indirect Attainment";
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .box:nth-child(11):hover::after {
+    content: "PEO";
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .box:nth-child(12):hover::after {
+    content: "Direct & Indirect CO";
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .box:nth-child(13):hover::after {
+    content: "Threshold";
+    font-size: 15px;
+    text-align: center;
+  }
+
+  li {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    font-size: 15px;
+  }
+
+  #first,
+  #second,
+  #third,
+  #fourth,
+  #fifth,
+  #new1,
+  #admindrop,
+  #newcrsend,
+  #dico
+  {
+    display: none;
+  }
+
+  hr {
+    margin: 0px;
+  }
+
+  div ul {
+    padding: 10px;
+    text-align: center;
+    margin: 0px;
+  }
+  ul li a {
+    color: white;
+  }
+</style>
+
+{% endblock %} {% block content %}
+
+<div class="container1">
+  <div
+    class="box"
+    style="background-color: rgb(226, 141, 45)"
+    onclick="drop('first')"
+  >
+    Student
+    <div id="first">
+      <ul>
+        <li>
+          <a href="{{url_for('upload_student')}}">Student Info Excel Upload</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div
+    class="box"
+    style="background-color: rgb(236, 188, 13)"
+    onclick="drop('second')"
+  >
+    Mapping
+    <div id="second">
+      <ul>
+        <li>
+          <a href="{{url_for('quizmappingco')}}"> CIE Quiz Mapping </a>
+        </li>
+        <hr />
+        <li>
+          <a href="{{url_for('testmappingco')}}"> CIE Test Mapping </a>
+        </li>
+        <hr />
+        <li>
+          <a href="{{url_for('numberphases')}}"> Assignment Mapping </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div
+    class="box"
+    style="background-color: rgb(255, 204, 0)"
+    onclick="drop('new1')"
+  >
+    ViewMapping
+
+    <div id="new1">
+      <ul>
+        <li>
+          <a href="{{url_for('disp_quizmapping')}}"> View Quiz Mapping </a>
+        </li>
+        <hr />
+        <li>
+          <a href="{{url_for('disp_testmapping')}}"> View Test Mapping </a>
+        </li>
+        <hr />
+        <li>
+          <a href="{{url_for('disp_assignmentmapping')}}">
+            View Assignment Mapping
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div
+    class="box"
+    style="background-color: rgb(228, 83, 35)"
+    onclick="drop('third')"
+  >
+    Sample
+    <div id="third">
+      <ul>
+        <li><a href="{{ url_for('labco_calc')}}">Sample Lab Excel</a></li>
+        <hr />
+        <li><a href="{{ url_for('upload_csv')}}">Sample CIE Excel</a></li>
+        <hr />
+        <li>
+          <a href="{{ url_for('upload_assign') }}">Sample Assignment Excel</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div
+    class="box"
+    style="background-color: rgb(157, 193, 14)"
+    onclick="drop('newcrsend')"
+  >
+    CourseEnd
+    <div id="newcrsend" style="font-size: 20px">
+      <ul>
+        <li><a href="{{ url_for('crsendsurvey') }}">Course End Survey</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div
+    class="box"
+    style="background-color: rgb(76, 236, 142)"
+    onclick="drop('admindrop')"
+  >
+    Admin
+    <div id="admindrop" style="font-size: 20px">
+      <ul>
+        <li><a href="{{url_for('add_course')}}">Add New Course</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div
+    class="box"
+    style="background-color: rgb(123, 214, 13)"
+    onclick="drop('fourth')"
+  >
+    Upload
+    <div id="fourth" style="font-size: 25px">
+      <ul>
+        <li><a href="{{url_for('upload_csv')}}">CIE Marks</a></li>
+        <hr />
+
+        <li><a href="{{url_for('upload_assign')}}">Assignment Marks</a></li>
+        <hr />
+
+        <li><a href="{{url_for('labco_calc')}}">Lab Marks</a></li>
+        <hr />
+
+        <li>
+          <a href="{{url_for('sem_gradetomarks')}}">Semester Exam Marks</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div
+    class="box"
+    style="background-color: rgb(0, 162, 190)"
+    onclick="drop('fifth')"
+  >
+    ViewMarks
+    <div id="fifth" style="font-size: 25px">
+      <ul>
+        <li>
+          <a href="{{url_for('internal_calc')}}">Calculate Internal Marks</a>
+        </li>
+        <hr />
+        <li><a href="{{url_for('disp_allmarks')}}">View Internal Marks</a></li>
+        <hr />
+      </ul>
+    </div>
+  </div>
+
+  <!--<div class="box" style="background-color: rgb(96, 158, 212)">R</div> -->  
+
+  <div class="box" style="background-color: rgb(113, 182, 242)" onclick="drop('po')">PO
+    <div id="po" style="font-size: 20px">
+      <ul>
+        <li>
+          <a href="{{url_for('po_calc')}}">Calculate PO Attainment</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+  
+
+  <div
+    class="box"
+    style="background-color: rgb(91, 122, 150)"
+    onclick="drop('dico')"
+  >
+    Attainment
+    <div id="dico" style="font-size: 20px">
+      <ul>
+        <li>
+          <a href="{{url_for('dico_calc')}}"
+            >Calculate Direct-Indirect Attainment</a
+          >
+        </li>
+        <!--
+        <li>
+          <a href="{{url_for('subjectco_calc')}}">Calculate Subject CO</a>
+        </li>
+        -->
+        <li>
+          <a href="{{url_for('thresh_calc')}}">Calculate Threshold</a>
+        </li>
+        <li>
+          <a href="{{url_for('level_calc')}}">Calculate Level</a>
+        </li>
+        <li>
+          <a href="{{url_for('view_dico')}}">View Direct Attainment</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  
+</div>
+
+{% endblock %} {% block scripts %}
+
+<script>
+  function drop(n) {
+    let std = document.getElementById(n);
+    let parent = std.parentNode;
+    let init = std.textContent;
+    std.style.display = "block";
+    parent.addEventListener("mouseleave", () => {
+      std.style.display = "none";
+    });
+  }
+</script>
+
+{% endblock %}

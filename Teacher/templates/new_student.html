@@ -1,0 +1,81 @@
+{% extends 'base.html' %} {% block title %} Student CSV Upload {% endblock %} {%
+block head %}
+<style>
+  h1 {
+    font-size: 50px;
+    font-weight: 600;
+    background-image: linear-gradient(to left, #009ffd, #2a2a72);
+    color: transparent;
+    background-clip: text;
+    text-align: center;
+    -webkit-background-clip: text;
+    margin: 20px;
+  }
+
+  .main-flex {
+    margin: auto;
+    width: 50%;
+    border: 3px;
+    padding: 10px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+  }
+  table,
+  td {
+    border: 1px solid black;
+    text-align: center;
+  }
+  table th {
+    padding: 3px;
+  }
+  td:hover {
+    font-weight: 900;
+  }
+  tr:nth-child(even) {
+    background-color: #ffcccb;
+  }
+  tr:nth-child(odd) {
+    background-color: #add8e6;
+  }
+</style>
+
+{% endblock %} {% block content %}
+
+<div class="container">
+  
+  <div class="form-outline mb-4">
+    <table>
+      <tr>
+        <td>Sample StaffID CourseCode Mapping CSV</td>
+        <td>
+          <a href="{{ url_for('download_student_upload_sample') }}"
+          >Download File Here</a
+          >
+        </td>
+      </tr>
+    </table>
+  </div>
+  
+  <h1 style="text-align: center">Student Details Upload</h1>
+  <form method="POST" enctype="multipart/form-data" name="upload">
+    {{ form.hidden_tag()}}
+
+    <div class="main-flex form-outline mb-4">
+      <div class="file-upload1">
+        {{ form.file(placeholder='Choose File')}} {% for error in
+        form.file.errors %}
+        <p>{{ error }}</p>
+        {% endfor %}<br /><br />
+      </div>
+      <div class="main-flex">
+        <button class="file-upload-btn btn btn-lg btn-block btn-primary" type="submit">Upload</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

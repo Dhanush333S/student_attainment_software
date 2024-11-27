@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %} Lab CSV Upload {% endblock %}
+
+{% block head %}
+<style>
+    table{
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 10px;       
+    }
+    table, td{
+        border: 1px solid black;
+        text-align: center;
+    }
+    table th{
+        padding: 3px;
+        
+    }
+    td:hover{
+        font-weight: 900;
+    }
+    tr:nth-child(even) {
+        background-color: #FFCCCB;
+    }
+    tr:nth-child(odd) {
+        background-color: #ADD8E6;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="form-outline mb-4">
+        <h2 style="text-align: center;">Sample CSV Files</h1>
+        <table>           
+            
+            <tr>
+                <td>Sample Lab CSV</td>
+                <td><a href="{{ url_for('download_labsample') }}">Download Lab CSV Here</a></td>
+            </tr>
+            
+        </table>
+    </div>
+
+    <h1 style="text-align: center;">Lab CSV Upload</h1>
+    <form method="POST" enctype="multipart/form-data" name="upload">
+        {{ form.hidden_tag()}}       
+        
+        
+        <div class="form-outline mb-4">
+            <div class="file-upload1">
+                {{ form.file.label(class='form-label') }}<br>
+                {{ form.file(placeholder='Choose File')}}
+                {% for error in form.file.errors %}
+                <p>{{ error }}</p>
+                {% endfor %}<br><br>
+
+                <button class="file-upload-btn" type="submit">Upload</button>
+
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

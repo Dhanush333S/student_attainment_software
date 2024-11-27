@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <!-- site metas -->
+    <title>Student Performance Analyzer</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!-- bootstrap css -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/bootstrap.min.css')}}"
+    />
+    <!-- style css -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css' )}}"
+    />
+    <!-- Responsive-->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/responsive.css' )}}"
+    />
+    <!-- fevicon -->
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/fevicon.png' )}}"
+      type="image/gif"
+    />
+    <!-- Scrollbar Custom CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/jquery.mCustomScrollbar.min.css' )}}"
+    />
+    <!-- Tweaks for older IEs-->
+    <link
+      rel="stylesheet"
+      href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+      media="screen"
+    />
+    <link
+      rel="stylesheet"
+      href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css"
+    />
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script
+    ><![endif]-->
+  </head>
+  <!-- body -->
+
+  <body class="main-layout">
+    <!-- loader  -->
+    <div class="loader_bg">
+      <div class="loader">
+        <img
+          src="{{ url_for('static', filename='images/loading.gif')}}"
+          alt="#"
+        />
+      </div>
+    </div>
+    <!-- end loader -->
+    <div id="mySidepanel" class="sidepanel">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+      <a class="active" href="{{ url_for('home_page') }}">Home</a>
+      <a href="{{url_for('register')}}">Register</a>
+      <a href="{{url_for('login1')}}">User Login</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <!-- header -->
+    <header class="full_bg">
+      <!-- header inner -->
+      <div class="header">
+        <div class="container-fluid">
+          <div class="row d_flex">
+            <div class="col-md-2 col-sm-3 col logo_section">
+              <div class="full">
+                <div class="center-desk">
+                  <div class="logo">
+                    <a href="{{ url_for('home_page') }}"
+                      ><img
+                        src="{{ url_for('static', filename='images/logo_new.png')}}"
+                        alt="#"
+                        style="max-width: 35%"
+                    /></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-10 col-sm-9">
+              <ul class="site_menu text_align_right">
+                <li>
+                  <button class="openbtn" onclick="openNav()">
+                    <img
+                      src="{{ url_for('static', filename='images/menu_icon.png')}}"
+                    />
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end header inner -->
+      <!-- end header -->
+      <section class="banner_main">
+        <div id="myCarousel" class="carousel slide banner" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="container">
+                <div class="carousel-caption banner_po">
+                  <div class="row">
+                    <div class="col-md-10">
+                      <div class="build_box text_align_left">
+                        <h1>
+                          <span class="white">
+                            WELCOME TO Student Performance Analyzer</span
+                          >
+                        </h1>
+
+                        <p>
+                          It is a secure online application that enables
+                          universities to view the students' performance, and
+                          keep track of it's data.
+                        </p>
+
+                        <a
+                          class="read_more conatct_btn"
+                          href="{{ url_for('login1')}}"
+                          role="button"
+                          >Login now</a
+                        >
+                        <a
+                          class="read_more conatct_btn"
+                          href="#about"
+                          role="button"
+                          >About the portal</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </header>
+    <!-- end banner -->
+    <!-- about -->
+    <div id="about" class="about">
+      <div class="bg_about">
+        <div class="container">
+          <div class="row d_flex">
+            <div class="col-md-5">
+              <div class="about_img">
+                <figure>
+                  <img
+                    src="{{ url_for('static', filename='images/about.jpg')}}"
+                    alt="#"
+                  />
+                </figure>
+              </div>
+            </div>
+            <div class="col-md-6 offset-md-1">
+              <div class="titlepage text_align_right">
+                <h2>About the Portal</h2>
+                <p>This website is under development!</p>
+                <p>
+                  This is a department project, built by 4 CSE students, that
+                  allows professors to keep track of their students'
+                  performance, in a simplified way.
+                </p>
+                <!-- <a class="read_more" href="Javascript:void(0)">About Us</a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end about -->
+    <!-- products -->
+    <div id="product" class="prot">
+      <div class="products">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="titlepage text_align_left">
+                <h2>Softwares Used</h2>
+                <p>
+                  This website uses html/css/javascript for the front end, and
+                  python flask coupled with sqlalchemy(MYSQL database) for the
+                  backend.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          id="prod"
+          class="carousel slide product_banner"
+          data-ride="carousel"
+        >
+          <ol class="carousel-indicators">
+            <li data-target="#prod" data-slide-to="0" class="active"></li>
+            <li data-target="#prod" data-slide-to="1"></li>
+            <li data-target="#prod" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="container">
+                <div class="carousel-caption banner_pro">
+                  <div class="row d_flex">
+                    <div class="col-md-4">
+                      <div class="product mar_bottom30">
+                        <figure>
+                          <img
+                            src="{{ url_for('static', filename='images/pro1.png')}}"
+                            alt="#"
+                          />
+                        </figure>
+                        <h3>HTML</h3>
+                      </div>
+                    </div>
+                    <div class="col-md-4 mar_bottom30">
+                      <div class="product">
+                        <figure>
+                          <img
+                            src="{{ url_for('static', filename='images/pro2.png')}}"
+                            alt="#"
+                          />
+                        </figure>
+                        <h3>CSS</h3>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="product">
+                        <figure>
+                          <img
+                            src="{{ url_for('static', filename='images/pro3.png')}}"
+                            alt="#"
+                          />
+                        </figure>
+                        <h3>Python Flask</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="container">
+                <div class="carousel-caption banner_pro">
+                  <div class="row d_flex">
+                    <div class="col-md-4 mar_bottom30">
+                      <div class="product">
+                        <figure>
+                          <img
+                            src="{{ url_for('static', filename='images/pro4.png')}}"
+                            alt="#"
+                          />
+                        </figure>
+                        <h3>Javascript</h3>
+                      </div>
+                    </div>
+                    <div class="col-md-4 mar_bottom30">
+                      <div class="product">
+                        <figure>
+                          <img
+                            src="{{ url_for('static', filename='images/pro5.png')}}"
+                            alt="#"
+                          />
+                        </figure>
+                        <h3>SQLAlchemy</h3>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="product">
+                        <figure>
+                          <img
+                            src="{{ url_for('static', filename='images/pro6.png')}}"
+                            alt="#"
+                          />
+                        </figure>
+                        <h3>MYSQL</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a
+            class="carousel-control-prev"
+            href="#prod"
+            role="button"
+            data-slide="prev"
+          >
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a
+            class="carousel-control-next"
+            href="#prod"
+            role="button"
+            data-slide="next"
+          >
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- end products -->
+    <!--  contact -->
+    <div id="contact" class="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="bg_yeloow">
+              <div class="titlepage text_align_center">
+                <h2>Contact Us</h2>
+              </div>
+              <div class="row">
+                <div class="col-md-10 offset-md-1">
+                  <form id="request" class="main_form">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <input
+                          class="contactus"
+                          placeholder="Name"
+                          type="type"
+                          name=" Name"
+                        />
+                      </div>
+                      <div class="col-md-12">
+                        <input
+                          class="contactus"
+                          placeholder="Email"
+                          type="type"
+                          name="Email"
+                        />
+                      </div>
+                      <div class="col-md-12">
+                        <input
+                          class="contactus"
+                          placeholder="Phone Number"
+                          type="type"
+                          name="Phone Number"
+                        />
+                      </div>
+                      <div class="col-md-12">
+                        <textarea
+                          class="textarea"
+                          placeholder="Message"
+                          type="type"
+                          Message="Name"
+                        >
+Message</textarea
+                        >
+                      </div>
+                      <div class="col-md-12">
+                        <button class="send_btn">Send</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end contact -->
+    <!--  footer -->
+    <footer>
+      <div class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 offset-md-3"></div>
+            <div class="col-md-12">
+              <ul class="social_icon">
+                <li>
+                  <a
+                    href="https://www.facebook.com/RVCEngineering"
+                    target="_blank"
+                    ><i class="fa fa-facebook" aria-hidden="true"></i
+                  ></a>
+                </li>
+                <li>
+                  <a
+                    href="https://twitter.com/rvce_official?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+                    target="_blank"
+                    ><i class="fa fa-twitter" aria-hidden="true"></i
+                  ></a>
+                </li>
+
+                <li>
+                  <a
+                    href="https://www.instagram.com/rvcollegeofengineering/?hl=en"
+                    target="_blank"
+                    ><i class="fa fa-instagram" aria-hidden="true"></i
+                  ></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-10 offset-md-1">
+                <p>RVCE Student Performance Analyzer Portal</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- end footer -->
+    <!-- Javascript files-->
+    <script src="{{ url_for('static', filename='js/jquery.min.js' )}}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js' )}}"></script>
+    <script src="{{ url_for('static', filename='js/jquery-3.0.0.min.js') }}"></script>
+    <!-- sidebar -->
+    <script src="{{ url_for('static', filename='js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+    <script src="{{ url_for('static', filename='js/custom.js')}}"></script>
+  </body>
+</html>

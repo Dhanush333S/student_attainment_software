@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% block title %} Level Calculation {% endblock %} {%
+block head %}
+
+<style>
+  .levels {
+    box-shadow: #0000001a 2px 7px 11px 5px;
+  }
+  .submit{
+    box-shadow: #00000017 2px 3px 3px 4px;
+  }
+  .submit:hover{
+    box-shadow: #00000000 2px 7px;
+  }
+</style>
+
+{% endblock %} {% block content %}
+<form method="POST">
+  {{ form.hidden_tag() }}
+  <div class="levels main-flex form-control ml-auto mr-auto w-25 mt-5">
+    {{ form.level1.label(class="form-label")}} {{
+    form.level1(class="form-control form-control-lg", placeholder="Enter Level 1
+    %", autocomplete="off") }} {% for error in form.level1.errors %}
+    <p>{{ error }}</p>
+    {% endfor %} {{ form.level2.label(class="form-label")}} {{
+    form.level2(class="form-control form-control-lg", placeholder="Enter Level 2
+    %", autocomplete="off") }} {% for error in form.level2.errors %}
+    <p>{{ error }}</p>
+    {% endfor %} {{ form.level3.label(class="form-label")}} {{
+    form.level3(class="form-control form-control-lg", placeholder="Enter Level 3
+    %", autocomplete="off") }} {% for error in form.level3.errors %}
+    <p>{{ error }}</p>
+    {% endfor %}
+    <div class="d-flex justify-content-center align-items-center m-4">
+      {{ form.submit(class='submit btn btn-primary') }}
+    </div>
+  </div>
+</form>
+{% endblock %} {% block scripts %} {% endblock %}

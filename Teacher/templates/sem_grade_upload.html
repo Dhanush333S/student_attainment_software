@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %} Upload Sem Grades {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <form method="POST" enctype="multipart/form-data" name="upload">
+        {{ form.hidden_tag()}}        
+       
+        
+        <div class="form-outline mb-4">
+            <div class="file-upload1">
+                {{ form.file.label(class='form-label') }}<br>
+                {{ form.file(placeholder='Choose File')}}
+                {% for error in form.file.errors %}
+                <p>{{ error }}</p>
+                {% endfor %}<br><br>
+            </div>
+            <div class="form-outline mb-4">
+                {{ form.scheme_year.label(class='form-label') }}<br>
+                {{ form.scheme_year(class='form-control') }}
+                {% for error in form.scheme_year.errors %}
+                <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+            <button class="file-upload-btn" type="submit">Upload</button>
+
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block title %} Admin Page{% endblock %} {% block
+head %} {% endblock%} {% block content %}
+<h1>Grade Marks Mapping</h1>
+
+<div class="container">
+  <form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <div class="main-flex form-control">
+      {{ form.scheme_year.label(class="form-label")}} {{
+      form.scheme_year(class="form-control form-control-lg", placeholder="Enter
+      Scheme Year", autocomplete="off") }} {% for error in
+      form.scheme_year.errors %}
+      <p>{{ error }}</p>
+      {% endfor %}
+    </div>
+
+    <div class="main-flex form-outline mb-4">
+      <div class="main-flex">
+        {{ form.file(placeholder='Choose File')}} {% for error in
+        form.file.errors %}
+        <p>{{ error }}</p>
+        {% endfor %}<br /><br />
+      </div>
+    </div>
+
+    <div class="form-outline mb-4">{{ form.submit }}</div>
+  </form>
+</div>
+
+{% endblock %}

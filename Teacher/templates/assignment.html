@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %}Assignment{% endblock %}
+
+{% block head %}
+<style>
+    table {
+        width: 100%;
+        border-collapse: separate;
+
+    }
+
+    table,
+    td {
+
+        text-align: center;
+    }
+
+    table th {
+        padding: 3px;
+
+    }
+
+    td:hover {
+        font-weight: 900;
+    }
+
+    tr:nth-child(even) {
+        background-color: #FFCCCB;
+    }
+
+    tr:nth-child(odd) {
+        background-color: #ADD8E6;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 style="text-align: center;">Assignment Mapping</h1>
+    <form method="post">
+        {{ form.hidden_tag() }}
+        {% set phase_count = namespace(value=1) %}
+        {% for new_phase in form.all %}
+        <h2>Phase {{ phase_count.value }} Mapping</h2>
+        <table>
+            <tr>
+                <th>Rubrics</th>
+                <th>CO Mapped</th>
+                <th>Max Marks</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>{{ new_phase.rubrics1 }}</td>
+                <td>{{ new_phase.rubrics1m }}</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>{{ new_phase.rubrics2 }}</td>
+                <td>{{ new_phase.rubrics2m }}</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>{{ new_phase.rubrics3 }}</td>
+                <td>{{ new_phase.rubrics3m }}</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>{{ new_phase.rubrics4 }}</td>
+                <td>{{ new_phase.rubrics4m }}</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>{{ new_phase.rubrics5 }}</td>
+                <td>{{ new_phase.rubrics5m }}</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>{{ new_phase.rubrics6 }}</td>
+                <td>{{ new_phase.rubrics6m }}</td>
+            </tr>
+
+
+
+        </table>
+        <hr>
+        {% set phase_count.value = phase_count.value + 1 %}
+        {% endfor %}
+        <br>
+        <div>
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+        </div>
+        <br>
+    </form>
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends 'base.html' %} {% block title %} Internal Attainment {% endblock %}
+{% block head %}
+<style>
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+  }
+
+  table,
+  td {
+    border: 1px solid black;
+    text-align: center;
+  }
+
+  table th {
+    padding: 3px;
+  }
+
+  td:hover {
+    font-weight: 900;
+  }
+
+  tr:nth-child(even) {
+    background-color: #ffcccb;
+  }
+  tr:nth-child(odd) {
+    background-color: #add8e6;
+  }
+  #Download {
+    position: fixed;
+    background-color: blue;
+    color: white;
+    bottom: 10px;
+    right: 10px;
+
+    cursor: pointer;
+  }
+</style>
+
+{% endblock %} {% block content %}
+<div class="container">
+  <h1 style="text-align: center">Final Internal Student Attainment</h1>
+  <table id="data">
+    <tr>
+      <th>USN</th>
+      <th>CO1p</th>
+      <th>CO2p</th>
+      <th>CO3p</th>
+      <th>CO4p</th>
+      <th>CO5p</th>
+      <th>CO6p</th>
+      <th>CO7p</th>
+      <th>CO8p</th>
+      <th>CO9p</th>
+      <th>CO10p</th>
+    </tr>
+    {% for i in (d.keys()) %}
+    <tr>
+      <th>{{i}}</th>
+      <th>{{d[i][0]}}</th>
+      <th>{{d[i][1]}}</th>
+      <th>{{d[i][2]}}</th>
+      <th>{{d[i][3]}}</th>
+      <th>{{d[i][4]}}</th>
+      <th>{{d[i][5]}}</th>
+      <th>{{d[i][6]}}</th>
+      <th>{{d[i][7]}}</th>
+      <th>{{d[i][8]}}</th>
+      <th>{{d[i][9]}}</th>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+<button id="Download" onClick="export_data()">Download</button>
+{% endblock %} {% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+  function export_data() {
+    let data = document.getElementById("data");
+    var fp = XLSX.utils.table_to_book(data, { sheet: "sheet1" });
+    XLSX.write(fp, {
+      bookType: "xlsx",
+      type: "base64",
+    });
+    XLSX.writeFile(fp, "test.xlsx");
+  }
+</script>
+{% endblock %}

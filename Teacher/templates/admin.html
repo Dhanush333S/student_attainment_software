@@ -1,0 +1,244 @@
+{% extends 'base.html' %} {% block title %} Admin Page{% endblock %} {% block
+head %}
+<style>
+  .admin-container {
+    padding: 5em;
+  }
+  .float-child {
+    width: 49%;
+    float: left;
+    padding: 10px;
+    margin: 1px;
+    border: 1px solid red;
+    display: inline-block;
+  }
+  .float-child1 {
+    width: 33%;
+    float: left;
+    padding: 13px;
+    margin: 1px;
+    border: 1px solid red;
+    display: inline-block;
+  }
+  .flex-container {
+    display: flex;
+    width: 49%;
+
+    display: inline-block;
+    flex-flow: column wrap;
+    padding: 13px;
+    margin: 1px;
+    border: 1px solid red;
+  }
+  .main-flex {
+    display: flex;
+    width: 100%;
+
+    display: inline-block;
+    flex-flow: column wrap;
+    padding: 13px;
+    margin: 5px;
+    border: 1px solid blue;
+    
+  }
+  .sub-container {
+    display: flex;
+    width: 100%;
+
+    display: inline-block;
+    flex-flow: column wrap;
+    padding: 2px;
+    margin: 2px;
+    
+  }
+
+  h1 {
+   
+  font-size: 70px;
+  font-weight: 600;
+  background-image: linear-gradient(to left, #009FFD, #2A2A72);
+  color: transparent;
+  background-clip: text;
+  text-align : center;
+  -webkit-background-clip: text;
+
+  }
+</style>
+{% endblock %} {% block content %}
+
+<div class="admin-container">
+  <h1>New Course</h1>
+  <form method="post">
+    {{ form.hidden_tag() }}
+
+    
+    <div class="main-flex form-control">
+      {{ form.coursename.label(class="form-label")}} 
+      {{ form.coursename(class="form-control form-control-lg", placeholder="Enter Course Name", autocomplete="off") }}      
+      {% for error in form.coursename.errors %}
+      <p>{{ error }}</p>
+      {% endfor %}
+    </div>
+
+  <div class="main-flex form-control"> 
+    <div class="flex-container">
+      {{ form.coursecode.label(class="form-label")}} 
+      {{
+      form.coursecode(class="form-control form-control-lg", placeholder="Enter
+      Course Code", autocomplete="off") }} 
+      {% for error in form.coursecode.errors %}
+      <p>{{ error }}</p>
+      {% endfor %}
+    </div>   
+
+    <div class="flex-container">
+      {{ form.co_number.label(class="form-label")}} {{
+      form.co_number(class="form-control form-control-lg", placeholder="Enter
+      number of CO's", autocomplete="off") }} {% for error in
+      form.co_number.errors %}
+      <p>{{ error }}</p>
+      {% endfor %}
+    </div>
+
+  
+    <div class="flex-container">
+      <div class="form-label">Lab Component</div> 
+      
+      {% for subfield in form.lab %}
+      <div class="sub-container">
+      {{subfield}} {{subfield.label}}
+      </div>
+      {% endfor %}
+      {% for error in form.lab.errors %}
+      <p>{{ error }}</p>
+      {% endfor %}
+    </div>
+    
+    
+    
+
+    <div class="flex-container">
+      {{ form.sem.label(class="form-label")}} 
+      {{ form.sem(class="form-control
+      form-control-lg", placeholder="Enter semester", autocomplete="off") }} 
+      {%for error in form.sem.errors %}
+      <p>{{ error }}</p>
+      {% endfor %}
+    </div>
+
+  </div>
+
+    <div></div>
+
+    <br style="clear: both" />
+    <!--Direct-Indirect-->
+    <div class="main-flex form-control">
+      <div class="form-label">Direct-Indirect Ratio</div>
+      <div class="float-child">
+        {{ form.dicop1(class="form-control", placeholder="Enter Direct %",
+        autocomplete="off") }}
+      </div>
+      <div class="float-child">
+        {{ form.dicop2(class="form-control", placeholder='Enter Indirect %',
+        autocomplete="off") }}
+      </div>
+
+      {% for error in form.dicop1.errors %}
+      <p>{{ error }}</p>
+      {% endfor %} {% for error in form.dicop2.errors %}
+      <p>{{ error }}</p>
+      {% endfor %}
+    </div>
+
+    <!--Direct attainment cie-see-->
+    <div class="main-flex form-control">
+      <div class="form-label">CIE-SEE Ratio for direct attainment</div>
+      <div class="float-child">
+        {{ form.scop1(class="form-control", placeholder="Enter CIE %",
+        autocomplete="off") }}
+      </div>
+      <div class="float-child">
+        {{ form.scop2(class="form-control", placeholder='Enter SEE %',
+        autocomplete="off") }}
+      </div>
+
+      {% for error in form.scop1.errors %}
+      <p>{{ error }}</p>
+      {% endfor %} {% for error in form.scop2.errors %}
+      <p>{{ error }}</p>
+      {% endfor %}
+    </div>
+
+    
+
+    <!--Direct attainment test, quiz, assignment-->
+    <div class="main-flex form-control">
+      <div class="form-label">Test-Quiz-Assignment Ratio</div>
+      <div class="float-child1">
+        {{ form.ciet(class="form-control", placeholder="Enter Test %",
+        autocomplete="off") }}
+      </div>
+      <div class="float-child1">
+        {{ form.cieq(class="form-control", placeholder='Enter Quiz %',
+        autocomplete="off") }}
+      </div>
+      <div class="float-child1">
+        {{ form.assign(class="form-control", placeholder='Enter Assignment %',
+        autocomplete="off") }}
+      </div>
+
+      {% for error in form.ciet.errors %}
+      <p>{{ error }}</p>
+      {% endfor %} {% for error in form.cieq.errors %}
+      <p>{{ error }}</p>
+      {% endfor %} {% for error in form.assign.errors %}
+      <p>{{ error }}</p>
+      {% endfor %}
+    </div>
+
+    <!--Level Percentage-->
+    <div class="main-flex form-control">
+      <div class="form-label">Level Percentage Allocation</div>
+      <div class="float-child1">
+        {{ form.level1(class="form-control", placeholder="Enter Level1 %",
+        autocomplete="off") }}
+      </div>
+      <div class="float-child1">
+        {{ form.level2(class="form-control", placeholder='Enter Level2 %',
+        autocomplete="off") }}
+      </div>
+      <div class="float-child1">
+        {{ form.level3(class="form-control", placeholder='Enter Level3 %',
+        autocomplete="off") }}
+      </div>
+
+      {% for error in form.level1.errors %}
+      <p>{{ error }}</p>
+      {% endfor %} {% for error in form.level2.errors %}
+      <p>{{ error }}</p>
+      {% endfor %} {% for error in form.level3.errors %}
+      <p>{{ error }}</p>
+      {% endfor %}
+    </div>
+
+    <div class="main-flex form-control">
+      {{ form.target.label(class="form-label")}} {{
+      form.target(class="form-control form-control-lg", placeholder="Enter Target %", autocomplete="off") }} {% for error in form.target.errors %}
+      <p>{{ error }}</p>
+      {% endfor %}
+    </div>
+
+    <div class="main-flex form-control">
+      {{ form.scheme_year.label(class="form-label")}} {{
+      form.scheme_year(class="form-control form-control-lg", placeholder="Enter Schema Year", autocomplete="off") }} {% for error in form.scheme_year.errors %}
+      <p>{{ error }}</p>
+      {% endfor %}
+    </div>
+
+    <div class="main-flex form-control">
+      {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+    </div>
+  </form>
+</div>
+
+{% endblock %}

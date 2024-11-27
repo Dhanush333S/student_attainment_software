@@ -1,0 +1,64 @@
+{% extends 'base.html' %} {% block title %} Course End Survey {% endblock %} {%
+block head %}
+<style>
+  table {
+    width: 100%;
+    border-collapse: separate;
+  }
+  table,
+  td {
+    text-align: center;
+  }
+  table th {
+    padding: 3px;
+  }
+  table td {
+    width: 70px;
+  }
+  table td input {
+    width: 69px;
+  }
+  td:hover {
+    font-weight: 900;
+  }
+  tr:nth-child(even) {
+    background-color: #ffcccb;
+  }
+  tr:nth-child(odd) {
+    background-color: #add8e6;
+  }
+</style>
+{% endblock %} {% block content %}
+<h1 style="text-align: center">Course End Survey</h1>
+<div class="container">
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    <table>
+      <tr>
+        <th>Question No.</th>
+        <th>Excellent</th>
+        <th>Very Good</th>
+        <th>Good</th>
+        <th>Satisfactory</th>
+        <th>Poor</th>
+        <th>CO Mapped</th>
+      </tr>
+      {% set count = namespace(value=1) %} {% for row in form.alltogether %}
+      <tr>
+        <td>{{ count.value }}</td>
+        <td>{{ row.exc }}</td>
+        <td>{{ row.vg }}</td>
+        <td>{{ row.g }}</td>
+        <td>{{ row.sat }}</td>
+        <td>{{ row.poor }}</td>
+        <td>{{ row.co }}</td>
+      </tr>
+      {% set count.value = count.value + 1 %} {% endfor %}
+    </table>
+    <hr />
+    <div>{{ form.submit(class="btn btn-lg btn-block btn-primary") }}</div>
+    <br />
+  </form>
+</div>
+
+{% endblock %}

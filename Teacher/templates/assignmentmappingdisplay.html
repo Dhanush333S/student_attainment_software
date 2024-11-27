@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+
+{% block title %} Assignment Mapping Display {% endblock %}
+
+{% block head %}
+<style>
+    table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 10px;
+    }
+
+    table,
+    td {
+        border: 1px solid black;
+        text-align: center;
+    }
+
+    table th {
+        padding: 3px;
+    }
+    
+    td:hover{
+        font-weight: 900;
+    }
+
+    tr:nth-child(even) {
+        background-color: #FFCCCB;
+    }
+    tr:nth-child(odd) {
+        background-color: #ADD8E6;
+    }
+</style>
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 style="text-align: center;">Assignment Mapping</h1>
+    {% if sett[0] >= 1%}
+    <h1>Phase-1</h1>
+    <table>
+        <tr>
+            <th><strong>Rubrics</strong></th>
+            <th><strong>CO Mapped</strong></th>
+            <th><strong>Maximum Marks</strong></th>
+        </tr>
+        {% for i in range(6) %}
+        <tr>
+            <td>{{i+1}}</td>
+            <td>{{l1co[i]}}</td>
+            <td>{{l1m[i]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <hr>
+    {% endif %}
+    
+
+    {% if sett[0] >= 2 %}
+    <h1>Phase-2</h1>
+    <table>
+        <tr>
+            <th><strong>Rubrics</strong></th>
+            <th><strong>CO Mapped</strong></th>
+            <th><strong>Maximum Marks</strong></th>
+        </tr>
+        {% for i in range(6) %}
+        <tr>
+            <td>{{i+1}}</td>
+            <td>{{l2co[i]}}</td>
+            <td>{{l2m[i]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <hr>
+    {% endif %}
+    
+
+    {% if sett[0] >= 3 %}
+    <h1>Phase-3</h1>
+    <table>
+        <tr>
+            <th><strong>Rubrics</strong></th>
+            <th><strong>CO Mapped</strong></th>
+            <th><strong>Maximum Marks</strong></th>
+        </tr>
+        {% for i in range(6) %}
+        <tr>
+            <td>{{i+1}}</td>
+            <td>{{l3co[i]}}</td>
+            <td>{{l3m[i]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <hr>
+    {% endif %}
+
+
+    {% if sett[0] >= 4 %}
+    <h1>Phase-4</h1>
+    <table>
+        <tr>
+            <th><strong>Rubrics</strong></th>
+            <th><strong>CO Mapped</strong></th>
+            <th><strong>Maximum Marks</strong></th>
+        </tr>
+        {% for i in range(6) %}
+        <tr>
+            <td>{{i+1}}</td>
+            <td>{{l4co[i]}}</td>
+            <td>{{l4m[i]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <hr>
+    {% endif %}
+
+    {% if sett[0] == 5 %}
+    <h1>Phase-5</h1>
+    <table>
+        <tr>
+            <th><strong>Rubrics</strong></th>
+            <th><strong>CO Mapped</strong></th>
+            <th><strong>Maximum Marks</strong></th>
+        </tr>
+        {% for i in range(6) %}
+        <tr>
+            <td>{{i+1}}</td>
+            <td>{{l5co[i]}}</td>
+            <td>{{l5m[i]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <hr>
+    {% endif %}
+
+</div>
+{% endblock %}
