@@ -3204,16 +3204,16 @@ def sem_gradetomarks():
     scheme_year = access.scheme_year
     if request.method == "GET":
         form.scheme_year.data = scheme_year
+        return render_template("sem_grade_upload.html",form=form)
 
     if labstat == "Y":
         max_marks = 300
     elif labstat == "N":
         max_marks = 200
-
+    print(form.scheme_year.data)
     if form.validate_on_submit():
         updated_scheme_year=form.scheme_year.data
         if updated_scheme_year!=scheme_year:
-            print("inside")
             grade_marks_access = grade_marks.query.filter_by(scheme=updated_scheme_year).first()
             if not grade_marks_access :
                 flash(f"Grade entry for the {updated_scheme_year} year is not found ! Set the Grade", category="danger")
@@ -3361,7 +3361,6 @@ def upload_assign():
         form.file.data.save(file_path)  # +filename
 
         m = am.query.filter_by(coursecode=the_coursecode).first()
-        print(m.num_ph)
 
         l_co = [
             m.p1r1,
@@ -3471,7 +3470,6 @@ def upload_assign():
 
                 for k in range(30):
                     co_scored[int(l_co[k]) - 1] += int(new_rec[k])
-                print(co_scored)
                 the_cop = [
                     (co_scored[0] / map_assign.total_co1_marks) * 100,
                     (co_scored[1] / map_assign.total_co2_marks) * 100,

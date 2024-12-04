@@ -1138,7 +1138,7 @@ class course(db.Model, UserMixin):
     level2 = db.Column(db.Float(), nullable=False)
     level3 = db.Column(db.Float(), nullable=False)
     target = db.Column(db.Float(), nullable=False)   
-    scheme_year = db.Column(db.Float(), nullable=False)   
+    scheme_year = db.Column(db.Integer(), nullable=False)   
     
 
     def __repr__(self):
