@@ -5361,6 +5361,9 @@ def crsendsurvey():
     if course_code == "":
         flash("Please enter an appropriate Course Code!", category="danger")
         return render_template("newmain.html")
+    
+    course_access = course.query.filter_by(coursecode=course_code).first()
+    num_co = course_access.numberco
 
     if form.validate_on_submit():
         for i in form.alltogether:
@@ -5379,7 +5382,10 @@ def crsendsurvey():
 
             if qe == None or qvg == None or qg == None or qs == None or qp == None:
                 break
-
+            
+            if int(i.co.data)>num_co:
+                flash(f'Maximum limit for COs is {num_co}',category='danger')
+                return render_template("courseendsurvey.html", form=form)
             q = ((10 * qe) + (8 * qvg) + (6 * qg) + (4 * qs) + (2 * qp)) / n
 
             lco[int(i.co.data) - 1] += q
