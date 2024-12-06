@@ -12,3 +12,6 @@ pip install Flask-WTF
 pip install pytest
 
 pip install cryptography
+
+# for IP address POST req
+pip install requests
