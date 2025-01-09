@@ -18,4 +18,5 @@ pip install
 
 # Small changes to be done
 > In __init__.py set the configuration files path
+
 > Incase of error create "**uploads**" folder in "**static**" folder
