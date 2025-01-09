@@ -13,5 +13,9 @@ pip install pytest
 
 pip install cryptography
 
-# for IP address POST req
-pip install requests
+# For IP address POST req
+pip install 
+
+# Small changes to be done
+> In __init__.py set the configuration files path
+> Incase of error create "**uploads**" folder in "**static**" folder
