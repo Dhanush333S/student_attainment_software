@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %} CO Details {% endblock %}
+
+
+{% block head %}
+<style>
+table{
+    width: 100%;
+    border-collapse: separate;
+          
+}
+table, td{
+    
+    text-align: center;
+}
+table th{
+    padding: 3px;
+    
+}
+td:hover{
+    font-weight: 900;
+}
+tr:nth-child(even) {
+    background-color: #FFCCCB;
+}
+tr:nth-child(odd) {
+    background-color: #ADD8E6;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    <form method="post">
+        {{ form.hidden_tag() }}
+        <table>
+            <tr>
+                <th>CO Number</th>
+                <th>CO Description</th>
+            </tr>
+            {% set count = namespace(value=1) %}
+            {% for new_co in form.cos %}
+            <tr>
+                <td>{{ count.value }}</td>
+                <td>{{ new_co.details }}</td>
+            </tr>
+            {% set count.value = count.value + 1 %}
+            {% endfor %}
+        </table>
+        <div>
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+        </div>
+    </form>
+</div>
+
+{% endblock %}

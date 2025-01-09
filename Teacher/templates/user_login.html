@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block title %} User Login {% endblock %}
+
+{% block head %}
+<style>
+    .full {
+        background-image: url("https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 50%;
+    }
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="full">
+
+    <section class="vh-90">
+
+
+        <div class="col col-xl-10 d-flex justify-content-center">
+
+
+            <div class="col-md-6 col-lg-7 d-flex justify-content-center">
+                <div class="card-body p-4 p-lg-5 text-white">
+
+                    <form method="POST">
+                        {{ form.hidden_tag() }}
+
+
+                        <div class="d-flex align-items-center mb-3 pb-1">
+                            <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                            <span class="h1 fw-bold mb-0">
+                                <a href="{{ url_for('home_page')}}">
+                                    <img src="{{ url_for('static', filename='images/logo_new.png')}}" alt="RV Logo"
+                                        class="img-fluid" style="border-radius:1rem 0 0 1rem" />
+                                </a>
+                            </span>
+                        </div>
+
+                        <h4 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Welcome Back !
+                        </h5>
+                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Login to your
+                            account
+                        </h5>
+
+                        <div class="form-outline mb-4">
+                            {{ form.username.label(class='form-label')}}
+                            {{ form.username(class="form-control form-control-lg", placeholder="Enter Username",
+                            autocomplete="off") }}
+
+                            {% for error in form.username.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+
+                        </div>
+
+
+                        <div class="form-outline mb-4">
+                            {{ form.password.label(class = "form-label") }}
+                            {{ form.password(class="form-control form-control-lg", placeholder="Enter Password")}}
+
+                            {% for error in form.password.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+
+                        <div>
+                            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+                        </div>
+
+                    </form>
+                    <hr>
+                    <h3 style="text-align: center;"><a style="color: white;" href="{{ url_for('register') }}">Don't have
+                            an account?</a></h3>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+</div>
+
+{% endblock %}

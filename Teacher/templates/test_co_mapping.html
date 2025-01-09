@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% block title %} Test CO Mapping {% endblock %}
+
+{% block head %}
+<style>
+    table{
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 10px;       
+    }
+    table, td{
+        border: 1px solid black;
+        text-align: center;
+    }
+    table th{
+        padding: 3px;
+    }
+    
+    
+    
+</style>
+
+{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h1 style="text-align: center;">Test CO Mapping</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-outline mb-4">
+            {{ form.test_number.label(class='form-label') }}
+            {{ form.test_number(class="form-control form-control-lg", placeholder="Enter Test Number") }}
+            {% for error in form.test_number.errors %}
+            <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+        
+        <table>
+            <tr>
+                <th>Question</th>
+                <th>CO Mapped</th>
+                <th>Maximum Marks</th>
+            </tr>
+            <tr>
+                <td>{{ form.q1a.label(class='form-label')}}</td>                
+                <td>{{ form.q1a(class="form-control form-control-lg", placeholder="Enter CO", autocomplete="off")}}</td>
+                <td>{{ form.q1am(class="form-control form-control-lg", placeholder="Enter Marks", autocomplete="off")}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.q1b.label(class='form-label')}}</td>                
+                <td>{{ form.q1b(class="form-control form-control-lg", placeholder="Enter CO", autocomplete="off")}}</td>
+                <td>{{ form.q1bm(class="form-control form-control-lg", placeholder="Enter Marks", autocomplete="off")}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.q1c.label(class='form-label')}}</td>                
+                <td>{{ form.q1c(class="form-control form-control-lg", placeholder="Enter CO", autocomplete="off")}}</td>
+                <td>{{ form.q1cm(class="form-control form-control-lg", placeholder="Enter Marks", autocomplete="off")}}</td>
+            </tr>
+            <hr>
+            <tr>
+                <td>{{ form.q2a.label(class='form-label')}}</td>                
+                <td>{{ form.q2a(class="form-control form-control-lg", placeholder="Enter CO", autocomplete="off")}}</td>
+                <td>{{ form.q2am(class="form-control form-control-lg", placeholder="Enter Marks", autocomplete="off")}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.q2b.label(class='form-label')}}</td>                
+                <td>{{ form.q2b(class="form-control form-control-lg", placeholder="Enter CO", autocomplete="off")}}</td>
+                <td>{{ form.q2bm(class="form-control form-control-lg", placeholder="Enter Marks", autocomplete="off")}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.q2c.label(class='form-label')}}</td>                
+                <td>{{ form.q2c(class="form-control form-control-lg", placeholder="Enter CO", autocomplete="off")}}</td>
+                <td>{{ form.q2cm(class="form-control form-control-lg", placeholder="Enter Marks", autocomplete="off")}}</td>
+            </tr>
+            <hr>
+
+            <tr>
+                <td>{{ form.q3a.label(class='form-label')}}</td>                
+                <td>{{ form.q3a(class="form-control form-control-lg", placeholder="Enter CO", autocomplete="off")}}</td>
+                <td>{{ form.q3am(class="form-control form-control-lg", placeholder="Enter Marks", autocomplete="off")}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.q3b.label(class='form-label')}}</td>                
+                <td>{{ form.q3b(class="form-control form-control-lg", placeholder="Enter CO", autocomplete="off")}}</td>
+                <td>{{ form.q3bm(class="form-control form-control-lg", placeholder="Enter Marks", autocomplete="off")}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.q3c.label(class='form-label')}}</td>                
+                <td>{{ form.q3c(class="form-control form-control-lg", placeholder="Enter CO", autocomplete="off")}}</td>
+                <td>{{ form.q3cm(class="form-control form-control-lg", placeholder="Enter Marks", autocomplete="off")}}</td>
+            </tr>
+
+            <tr>
+                <td>{{ form.q4a.label(class='form-label')}}</td>                
+                <td>{{ form.q4a(class="form-control form-control-lg", placeholder="Enter CO", autocomplete="off")}}</td>
+                <td>{{ form.q4am(class="form-control form-control-lg", placeholder="Enter Marks", autocomplete="off")}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.q4b.label(class='form-label')}}</td>                
+                <td>{{ form.q4b(class="form-control form-control-lg", placeholder="Enter CO", autocomplete="off")}}</td>
+                <td>{{ form.q4bm(class="form-control form-control-lg", placeholder="Enter Marks", autocomplete="off")}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.q4c.label(class='form-label')}}</td>                
+                <td>{{ form.q4c(class="form-control form-control-lg", placeholder="Enter CO", autocomplete="off")}}</td>
+                <td>{{ form.q4cm(class="form-control form-control-lg", placeholder="Enter Marks", autocomplete="off")}}</td>
+            </tr>
+
+            <tr>
+                <td>{{ form.q5a.label(class='form-label')}}</td>                
+                <td>{{ form.q5a(class="form-control form-control-lg", placeholder="Enter CO", autocomplete="off")}}</td>
+                <td>{{ form.q5am(class="form-control form-control-lg", placeholder="Enter Marks", autocomplete="off")}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.q5b.label(class='form-label')}}</td>                
+                <td>{{ form.q5b(class="form-control form-control-lg", placeholder="Enter CO", autocomplete="off")}}</td>
+                <td>{{ form.q5bm(class="form-control form-control-lg", placeholder="Enter Marks", autocomplete="off")}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.q5c.label(class='form-label')}}</td>                
+                <td>{{ form.q5c(class="form-control form-control-lg", placeholder="Enter CO", autocomplete="off")}}</td>
+                <td>{{ form.q5cm(class="form-control form-control-lg", placeholder="Enter Marks", autocomplete="off")}}</td>
+            </tr>
+        </table>
+        <hr>
+        <div class="form-outline mb-4">
+            {{ form.submit }}
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+

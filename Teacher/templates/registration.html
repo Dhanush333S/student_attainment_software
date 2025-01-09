@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %} User Registration {% endblock %}
+
+{% block head %}
+<style>
+    .vh-90 {
+        background-image: url("https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+        
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+<section class="vh-90">
+
+    <div class="col col-xl-10 d-flex justify-content-center">
+
+        <div class="col-md-6 col-lg-7 d-flex justify-content-center">
+            <div class="card-body p-4 p-lg-5 text-white">
+
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+
+
+                    <div class="d-flex align-items-center mb-3 pb-1">
+                        <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                        <span class="h1 fw-bold mb-0">
+                            <a href="{{ url_for('home_page')}}">
+                            <img src="{{ url_for('static', filename='images/logo_new.png')}}" alt="RV Logo"
+                                class="img-fluid" style="border-radius:1rem 0 0 1rem" />
+                            </a>
+                        </span>
+                    </div>
+
+                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;color:white">Register Here
+                    </h5>                 
+
+                    <div class="form-outline mb-4">
+                        {{ form.username.label(class='form-label', style='color:white;')}}
+                        {{ form.username(class="form-control form-control-lg", placeholder="Enter Username",
+                        autocomplete="off") }}
+
+                        {% for error in form.username.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+
+                    </div>                    
+
+                    <div class="form-outline mb-4">
+                        {{ form.password1.label(class = "form-label", style='color:white;') }}
+                        {{ form.password1(class="form-control form-control-lg", placeholder="Enter Password")}}
+
+                        {% for error in form.password1.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        {{ form.password2.label(class = "form-label", style='color:white;') }}
+                        {{ form.password2(class="form-control form-control-lg", placeholder="Confirm Password")}}
+
+                        {% for error in form.password2.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+
+
+                    <div>
+                        {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+                    </div>
+
+                </form>
+                <hr>
+                <h3 style="text-align: center;"><a style="color: white;" href="{{ url_for('login1') }}">Already have an account?</a></h3>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</section>
+
+{% endblock %}

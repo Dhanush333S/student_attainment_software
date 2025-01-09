@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Assignment{% endblock %}
+
+{% block head %}
+<style>
+    .admin-container {
+        padding: 5em;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+    <h1 style="text-align: center;">Assignment CO Mapping</h1>
+    <form method="post">
+        {{ form.hidden_tag() }}        
+
+        
+
+        <div class="form-outline mb-4">
+            {{ form.number.label(class="form-label")}}
+            {{ form.number(class="form-control form-control-lg", placeholder="Enter number of phases",
+            autocomplete="off") }}
+
+            {% for error in form.number.errors %}
+            <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <div>
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+        </div>
+
+    </form>
+
+
+</div>
+
+
+{% endblock %}

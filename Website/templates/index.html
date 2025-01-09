@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Attainment</title>
+</head>
+<body>
+    {% if ip=="127.0.0.1" %}
+    <h2>Contact Server Administrators. Server is down</h2>
+    {% else %}
+    <a href="http://{{ip}}:5000" target="_self">Link to Student Attainment Software</a>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %} {% endblock %}
+
+{% block head %}
+<style>
+table{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;       
+}
+table, td{
+    border: 1px solid black;
+    text-align: center;
+}
+table th{
+    padding: 3px;    
+}
+td:hover{
+    font-weight: 900;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<br>
+<div class="container">
+    <h1 style="text-align: center;">Quiz Marks</h1>
+    <table>
+        <tr>
+            <th><strong>USN</strong></th>
+            <th><strong>Quiz-1</strong></th>
+            <th><strong>Quiz-2</strong></th>
+            <th><strong>Quiz-3</strong></th>
+            <th><strong>Test-1</strong></th>
+            <th><strong>Test-2</strong></th>
+            <th><strong>Test-3</strong></th>
+            <th><strong>Assignment</strong></th>
+            <th><strong>Internal Score</strong></th>
+        </tr>
+        {% for i in l%}
+        <tr>
+            <td>{{i}}</td>
+            <td>{{d[i][0]}}</td>
+            <td>{{d[i][1]}}</td>
+            <td>{{d[i][2]}}</td>
+            <td>{{d[i][3]}}</td>
+            <td>{{d[i][4]}}</td>
+            <td>{{d[i][5]}}</td>
+            <td>{{d[i][6]}}</td>
+            <td>{{d[i][7]}}</td>
+        </tr>
+
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

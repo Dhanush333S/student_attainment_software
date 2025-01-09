@@ -1,0 +1,339 @@
+{% extends 'base.html' %} {% block title %} Main Page {% endblock %} {% block
+head %}
+<style>
+  body,
+  html {
+    overflow: hidden;
+  }
+  * {
+    margin: 0px;
+    padding: 0px;
+  }
+  .background {
+    background-image: linear-gradient(
+      to right bottom,
+      #9a9ae1,
+      #8aa7ec,
+      #79b3f4,
+      #69bff8,
+      #52cffe
+    );
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -2;
+    left: 0;
+  }
+
+  img {
+    width: 60px;
+    height: 60px;
+    padding: 2px;
+  }
+  li {
+    list-style: none;
+    padding: 20px;
+  }
+  li:hover {
+    cursor: pointer;
+  }
+  a {
+    --color: #403faa;
+    color: var(--color);
+    font-size: 20px;
+    text-decoration: none;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  }
+  li:hover a {
+    --color: white;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 5%;
+    margin-top: 3%;
+  }
+  .container button {
+    /* background-image: linear-gradient(to right top,#d2d6d9, #91defb, #cdecf2, #88d5dd, #73d8e2); */
+    background-image: linear-gradient(to right, #20c0ffdd, #6585d6dd);
+    position: relative;
+    width: 330px;
+    height: 100px;
+    color: rgb(29, 28, 28);
+    font-size: 30px;
+    margin: 10px;
+    padding: 20px;
+    text-align: left;
+    color: white;
+    /* box-shadow: 20px 20px 50px rgb(0 0 0 / 50%); */
+    /* backdrop-filter: blur(50px); */
+    border: 1px solid white;
+    border-radius: 10px;
+  }
+  .container button {
+    transition: 2s;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .container button::after {
+    content: "";
+    position: absolute;
+    top: -50px;
+    right: 130px;
+    height: 184%;
+    background-color: white;
+    opacity: 0.5;
+    transform: skew(32deg);
+    backdrop-filter: blur(50px);
+    width: 26px;
+    transition: 2s;
+  }
+  .container button:hover::after {
+    transform: skew(32deg) translateX(300px);
+  }
+  .container button:hover {
+    transform: scale(1.1);
+  }
+  .contain-button span ul {
+    width: fit-content;
+    text-decoration: none;
+    list-style: none;
+  }
+  .contain-button {
+    position: relative;
+    width: fit-content;
+  }
+  .contain-button span {
+    position: absolute;
+    z-index: 1;
+    left: 160px;
+    top: -25px;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 6px 7px 8px -2px grey;
+    display: none;
+    transition: all 1s;
+    opacity: 1;
+  }
+  .contain-button span li {
+    padding: 10px 30px 10px 30px;
+    text-align: center;
+  }
+  .contain-button span li:hover {
+    background-image: linear-gradient(to right, #858f93dd, #515561dd);
+  }
+  .contain-button span li:hover a {
+    --clr: white;
+  }
+  .contain-button span a {
+    --clr: black;
+    color: var(--clr);
+    font-size: 15px;
+  }
+  a {
+    color: white;
+  }
+</style>
+{% endblock %} {% block content %}
+<div class="background"></div>
+
+<div class="container">
+  <div class="contain-button">
+    <button onclick="dropDown(this)" class="organize">Admin</button>
+    <span class="organize">
+      <ul>
+        <li><a href="{{url_for('upload_student')}}">Add Students</a></li>
+        <hr />
+        <li><a href="{{url_for('add_course')}}">Add Course</a></li>
+        <hr />
+        <li>
+          <a href="{{url_for('upload_mapping')}}">StaffID CourseCode Mapping</a>
+        </li>
+        <li>
+          <a href="{{url_for('set_grade')}}">Set Grades</a>
+        </li>
+      </ul>
+    </span>
+  </div>
+
+  <div class="contain-button">
+    <button onclick="dropDown(this)" class="mapping">Mapping</button>
+    <span class="mapping">
+      <ul>
+        <li><a href="{{url_for('testmappingco')}}">CIE</a></li>
+        <hr />
+        <li><a href="{{url_for('quizmappingco')}}">QUIZ</a></li>
+        <hr />
+        <li><a href="{{url_for('numberphases')}}">ASSIGNMENT</a></li>
+      </ul>
+    </span>
+  </div>
+
+  <div class="contain-button">
+    <button onclick="dropDown(this)" class="vmapping">View Mapping</button>
+    <span class="vmapping">
+      <ul>
+        <li><a href="{{url_for('disp_testmapping')}}">CIE</a></li>
+        <hr />
+        <li><a href="{{url_for('disp_quizmapping')}}">QUIZ</a></li>
+        <hr />
+        <li><a href="{{url_for('disp_assignmentmapping')}}">ASSIGNMENT</a></li>
+      </ul>
+    </span>
+  </div>
+
+  <div class="contain-button">
+    <button onclick="dropDown(this)" class="sampleexcel">Sample Excels</button>
+    <span class="sampleexcel">
+      <ul>
+        <li><a href="{{url_for('upload_csv')}}">Sample CIE</a></li>
+
+        <li>
+          <a href="{{url_for('download_elsample')}}">Sample Assignment</a>
+        </li>
+        <li>
+          <a href="{{url_for('download_labsample')}}">Download LAB</a>
+        </li>
+        <li>
+          <a href="{{url_for('download_posample')}}">Sample PO Mapping</a>
+        </li>
+        <li>
+          <a href="{{url_for('download_gradesample')}}"
+            >Sample Grade Marks Mapping</a
+          >
+        </li>
+      </ul>
+    </span>
+  </div>
+
+  <div class="contain-button">
+    <button onclick="dropDown(this)" class="upload">Upload</button>
+    <span class="upload">
+      <ul>
+        <li><a href="{{url_for('upload_assign')}}">ASSIGNMENT</a></li>
+        <hr />
+        <li><a href="{{url_for('labco_calc')}}">LAB</a></li>
+        <hr />
+        <li><a href="{{url_for('upload_csv')}}">CIE</a></li>
+        <hr />
+        
+        <li><a href="{{url_for('sem_gradetomarks')}}">GRADE SEE MARKS</a></li>
+        <hr />
+        <li><a href="{{url_for('sem_perctomarks')}}">PERC% SEE MARKS</a></li>
+      </ul>
+    </span>
+  </div>
+
+  <div class="contain-button">
+    <button onclick="dropDown(this)" class="crsendsrvy">
+      <a href="{{url_for('crsendsurvey')}}">Course End survey</a>
+    </button>
+  </div>
+
+  <div class="contain-button">
+    <button onclick="dropDown(this)" class="calcAttainment">Calculate</button>
+    <span class="calcAttainment">
+      <ul>
+        <li>
+          <a href="{{url_for('internal_calc')}}"
+            >Calculate Internal Attainment</a
+          >
+        </li>
+        <hr />
+        <li>
+          <a href="{{url_for('dico_calc')}}"
+            >Calculate Direct-Indirect Attainment</a
+          >
+        </li>
+      </ul>
+    </span>
+  </div>
+
+  <div class="contain-button">
+    <button onclick="dropDown(this)" class="courseOutcome">
+      View Outcomes
+    </button>
+    <span class="courseOutcome">
+      <ul>
+        <li>
+          <a href="{{url_for('viewciecrsoutcome')}}">View CIE CourseOutcome</a>
+        </li>
+        <hr />
+        <li>
+          <a href="{{url_for('viewinternalcrsoutcome')}}"
+            >View Direct CourseOutcome</a
+          >
+        </li>
+        <hr />
+        <li>
+          <a href="{{url_for('viewdirectindirect')}}"
+            >View Direct-Indirect Attainment</a
+          >
+        </li>
+        <hr />
+      </ul>
+    </span>
+  </div>
+
+  <div class="contain-button">
+    <button onclick="dropDown(this)" class="level">Level and Threshold</button>
+    <span class="level">
+      <ul>
+        <li><a href="{{url_for('level_calc')}}">Calculate Level</a></li>
+        <hr />
+        <li>
+          <a href="{{url_for('thresh_calc')}}">Calculate Threshold</a>
+        </li>
+        <li>
+          <a href="{{url_for('viewlevel')}}">Display Level</a>
+        </li>
+      </ul>
+    </span>
+  </div>
+
+  <div class="contain-button">
+    <button onclick="dropDown(this)" class="po">Program Outcome</button>
+    <span class="po">
+      <ul>
+        <li><a href="{{url_for('po_calc')}}">Upload PO Mapping</a></li>
+
+        <li>
+          <a href="{{url_for('viewpoattainment')}}">Display PO Attainment</a>
+        </li>
+      </ul>
+    </span>
+  </div>
+
+  {% endblock %} {% block scripts %}
+  <script>
+    document.addEventListener("click", (e) => {
+      if (e.target.tagName === "LI") {
+        e.preventDefault();
+        console.log(e.target.getElementsByTagName("a")[0].getAttribute("href"));
+        location.href = e.target
+          .getElementsByTagName("a")[0]
+          .getAttribute("href");
+        // e.target.addEventListener('click')
+      }
+    });
+    function dropDown(cls) {
+      let a = document.getElementsByClassName(cls.className)[1];
+      a.style.display = "block";
+      if (cls.className === "level") {
+        a.style.top = "inherit";
+        a.style.bottom = "-100px";
+        a.style.left = "200px";
+      }
+      a.addEventListener("mouseleave", () => {
+        a.style.display = "none";
+      });
+    }
+  </script>
+
+  {% endblock %}
+</div>

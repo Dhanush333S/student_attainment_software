@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %} Attainment {% endblock %}
+
+{% block head %}
+<style>
+    table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 10px;
+    }
+
+    table,
+    td {
+        border: 1px solid black;
+        text-align: center;
+    }
+
+    table th {
+        padding: 3px;
+    }
+    
+    td:hover{
+        font-weight: 900;
+    }
+
+    tr:nth-child(even) {
+        background-color: #FFCCCB;
+    }
+    tr:nth-child(odd) {
+        background-color: #ADD8E6;
+    }
+</style>
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 style="text-align: center;">Final Direct Student Attainment</h1>
+    <table>
+        <tr>
+            <th>USN</th>
+            <th>CO1p</th>
+            <th>CO2p</th>
+            <th>CO3p</th>
+            <th>CO4p</th>
+            <th>CO5p</th>
+            <th>CO6p</th>
+            <th>CO7p</th>
+            <th>CO8p</th>
+            <th>CO9p</th>
+            <th>CO10p</th>
+        </tr>
+        {% for i in l %}
+        <tr>
+            <th>{{i}}</th>
+            <th>{{d[i][0]}}</th>
+            <th>{{d[i][1]}}</th>
+            <th>{{d[i][2]}}</th>
+            <th>{{d[i][3]}}</th>
+            <th>{{d[i][4]}}</th>
+            <th>{{d[i][5]}}</th>
+            <th>{{d[i][6]}}</th>
+            <th>{{d[i][7]}}</th>
+            <th>{{d[i][8]}}</th>
+            <th>{{d[i][9]}}</th>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
+{% endblock %}
