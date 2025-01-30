@@ -3553,10 +3553,18 @@ def upload_assign():
                 for k in range(30):
                     co_scored[int(l_co[k]) - 1] += int(new_rec[k])
                 the_cop = [
-                    (co_scored[0] / map_assign.total_co1_marks) * 100,
-                    (co_scored[1] / map_assign.total_co2_marks) * 100,
-                    (co_scored[2] / map_assign.total_co3_marks) * 100,
-                    (co_scored[3] / map_assign.total_co4_marks) * 100,
+                    (co_scored[0] / map_assign.total_co1_marks) * 100
+                    if map_assign.total_co1_marks
+                    else 0,
+                    (co_scored[1] / map_assign.total_co2_marks) * 100
+                    if map_assign.total_co2_marks
+                    else 0,
+                    (co_scored[2] / map_assign.total_co3_marks) * 100
+                    if map_assign.total_co3_marks
+                    else 0,
+                    (co_scored[3] / map_assign.total_co4_marks) * 100
+                    if map_assign.total_co4_marks
+                    else 0,
                     (co_scored[4] / map_assign.total_co5_marks) * 100
                     if map_assign.total_co5_marks
                     else 0,

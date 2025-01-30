@@ -14,7 +14,7 @@ pip install pytest
 pip install cryptography
 
 # For IP address POST req
-pip install 
+pip install requests
 
 # Small changes to be done
 > In __init__.py set the configuration files path
