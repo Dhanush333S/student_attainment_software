@@ -5155,7 +5155,7 @@ def download_posample():
     
     with open(samples_path_po, "w", newline="") as f:
         head = ["Sl.No", "CourseCode", "PO1", "PO2", "PO3", "PO4", "PO5", "PO6", "PO7", 
-                                        "PO8", "PO9", "PO10", "PO11", "PO12"]
+                                        "PO8", "PO9", "PO10", "PO11", "PO12","PSO1","PSO2"]
         w = csv.DictWriter(f, fieldnames=head)
         w.writeheader()
     
